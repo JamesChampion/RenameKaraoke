@@ -1,0 +1,46 @@
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe.config
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.pdb
+<<<<<<< HEAD
+=======
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csprojAssemblyReference.cache
+>>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.Properties.Resources.resources
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.GenerateResource.cache
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CoreCompileInputs.cache
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.exe
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.pdb
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe.config
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.pdb
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csprojAssemblyReference.cache
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.View.resources
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.Properties.Resources.resources
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.GenerateResource.cache
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CoreCompileInputs.cache
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.exe
+C:\Users\James\source\repos\RenameKarakoke\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.pdb
+<<<<<<< HEAD
+=======
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.View.Title_form.resources
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.View.DataTable_form.resources
+>>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe.config
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\bin\Debug\RenameKarakoke.pdb
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csprojAssemblyReference.cache
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.Title_form.resources
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.Properties.Resources.resources
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.GenerateResource.cache
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CoreCompileInputs.cache
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.exe
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.pdb
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.TextFileTable_Form.resources
+C:\Users\James\source\repos\RenameKaraoke Projects\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.QueryTable_form.resources
+<<<<<<< HEAD
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.QueryTable_form.resources
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.TextFileTable_Form.resources
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.Title_form.resources
+C:\Users\championj\source\repos\RenameKarakoke\RenameKarakoke\obj\Debug\RenameKarakoke.csprojAssemblyReference.cache
+=======
+>>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
