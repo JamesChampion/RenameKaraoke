@@ -50,10 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-<<<<<<< HEAD
     <Reference Include="System.IO.Compression.FileSystem" />
-=======
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,30 +62,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Objects\DirectoryReader.cs" />
     <Compile Include="Objects\FileReader.cs" />
     <Compile Include="Objects\IReader.cs" />
     <Compile Include="Model\Song.cs" />
     <Compile Include="UserResponse.cs" />
     <Compile Include="Controller\TitleController.cs" />
-=======
-    <Compile Include="Module\DirectoryReader.cs" />
-    <Compile Include="Module\FileReader.cs" />
-    <Compile Include="Module\IReader.cs" />
-    <Compile Include="Module\Song.cs" />
-    <Compile Include="Module\UserResponse.cs" />
-    <Compile Include="Module\Module.cs" />
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Objects\InputHandler.cs" />
-=======
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
     <Compile Include="View\QueryTable_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,11 +123,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <None Include="Images\Karaoke.png" />
-=======
-    <None Include="Resources\Karaoke.png" />
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -156,9 +137,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup />
-=======
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
