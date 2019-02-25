@@ -109,10 +109,7 @@ namespace RenameKarakoke
             this.TextFile_btn.TabIndex = 5;
             this.TextFile_btn.Text = "Browse";
             this.TextFile_btn.UseVisualStyleBackColor = true;
-<<<<<<< HEAD
            // this.TextFile_btn.Click += new System.EventHandler(this.TextFile_btn_Click);
-=======
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
             // 
             // Directory_btn
             // 
@@ -195,10 +192,6 @@ namespace RenameKarakoke
             this.Name = "Title_form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Renaming Wizard";
-<<<<<<< HEAD
-=======
-            this.Load += new System.EventHandler(this.Title_form_Load);
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
             ((System.ComponentModel.ISupportInitialize)(this.Karaoke_pictureBox)).EndInit();
             this.Input_panel.ResumeLayout(false);
             this.Input_panel.PerformLayout();

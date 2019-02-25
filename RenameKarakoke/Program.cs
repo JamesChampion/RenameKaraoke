@@ -14,18 +14,12 @@ namespace RenameKarakoke
         [STAThread]
         static void Main()
         {
-<<<<<<< HEAD
             var directoryReader = new DirectoryReader();
             var fileReader = new FileReader();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Title_form(directoryReader, fileReader));
-=======
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Title_form());
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
         }
     }
 }

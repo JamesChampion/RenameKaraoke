@@ -1,25 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.IO;
 using System.Windows.Forms;
 
 
-=======
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
 namespace RenameKarakoke
 {
     public partial class QueryTable_form : Form
     {
-<<<<<<< HEAD
         private readonly IReader _directoryReader;
         private readonly IReader _fileReader;
 
@@ -229,37 +217,3 @@ namespace RenameKarakoke
 //        Console.WriteLine(song.Title + " - " + song.Artist);
 //    }
 //}
-=======
-        public QueryTable_form()
-        {
-            InitializeComponent();
-        }
-
-        private void QueryTable_form_Load(object sender, EventArgs e)
-        {
-            var location = Location;
-             location.X += 350;
-            Location = location;
-            foreach (var song in Song.songQueryList)
-            {
-               
-                songBindingSource.Add(song);
-            }
-
-            
-        }
-        public void FindSong(Song song)
-        {
-            foreach (Song songQuery in Song.songQueryList)
-            {
-                if (song.Title == songQuery.Title)
-                {
-                    Console.WriteLine(" We Have A Match");
-                }
-            }
-        }
-    }
-
-
-}
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f

@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-﻿
-=======
-﻿using System;
-using System.Collections.Generic;
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
+
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,7 +6,6 @@ namespace RenameKarakoke
 {
     public partial class Title_form : Form
     {
-<<<<<<< HEAD
         private readonly IReader _directoryReader;
         private readonly IReader _fileReader;
         private readonly InputHandler _inputHandler;
@@ -43,49 +37,6 @@ namespace RenameKarakoke
                 var dirPath = Directory_txtBox.Text;
                 _directoryReader.Read(dirPath);
                 _queryTable.Show();
-=======
-        public Title_form()
-        {
-            InitializeComponent();
-            TextFile_btn.Click += (s, e) => { UpdateField(TextFile_txtBox, UserResponse.BrowseFile); };
-            Directory_btn.Click += (s, e) => { UpdateField(Directory_txtBox, UserResponse.BrowseDirectory); };
-        }
-
-        private void UpdateField(TextBox field, UserResponse userButtonResponse)
-        {
-            var module = new Module();
-            if (module.IsValidDialogResponse(userButtonResponse))
-                field.Text = module.GetUserDialogInput();
-            field.Refresh();
-        }
-
-        private void Quit_btn_Click(object sender, System.EventArgs e)
-        {
-            DialogResult result;
-            var title = "Quit Application";
-            var message = "Are you sure you would like to quit?";
-            result = MessageBox.Show(message, title, MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
-        private void Execute_btn_Click(object sender, System.EventArgs e)
-        {
-            var allTextBoxes = Input_panel.Controls.OfType<TextBox>();
-            if (IsValidInput(allTextBoxes))
-            {
-                var fileReader = new FileReader();
-                var fileName = TextFile_txtBox.Text;
-                fileReader.Read(fileName);
-                var directoryReader = new DirectoryReader();
-                var path = Directory_txtBox.Text;
-                directoryReader.Read(path);
-
-                
-
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
             }
             else
             {
@@ -98,7 +49,6 @@ namespace RenameKarakoke
 
 
         //Passes A Collection, Filters Based On Null Entries, Then Tries to Iterate Through It
-<<<<<<< HEAD
     
 
         private void Quit_btn_Click(object sender, System.EventArgs e)
@@ -114,20 +64,5 @@ namespace RenameKarakoke
         }
 
 
-=======
-        private bool IsValidInput(IEnumerable<TextBox> textBoxes)
-        {
-            var filteredResult = textBoxes.Where(t => t.TextLength == 0);
-            using (var enumerator = filteredResult.GetEnumerator())
-            {
-                return !enumerator.MoveNext();
-            }
-        }
-
-        private void Title_form_Load(object sender, EventArgs e)
-        {
-          
-        }
->>>>>>> aab5e9b4669314b9549fc5d37f0deb46ea440a9f
     }
 }
