@@ -75,6 +75,7 @@
             this.SongMasterDataTable_dataGridView.RowHeadersVisible = false;
             this.SongMasterDataTable_dataGridView.Size = new System.Drawing.Size(756, 538);
             this.SongMasterDataTable_dataGridView.TabIndex = 0;
+            this.SongMasterDataTable_dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SongMasterDataTable_dataGridView_ColumnHeaderMouseClick);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -97,6 +98,7 @@
             // songMasterBindingSource
             // 
             this.songMasterBindingSource.DataSource = typeof(RenameKarakoke.Song);
+            this.songMasterBindingSource.Sort = "Title";
             // 
             // TextFileTable_Form
             // 

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace RenameKarakoke
@@ -7,10 +7,9 @@ namespace RenameKarakoke
   public  class Song
     {
 
-
-        //Remove Static Ref IF Possible
-        public static List<Song> songMasterList = new List<Song>();
-        public static List<Song> songQueryList = new List<Song>();
+        //Remove Static Ref IF Possible****Ask Daniel For His Thoughts
+        public static BindingList<Song> songMasterList = new BindingList<Song>();
+        public static BindingList<Song> songQueryList = new BindingList<Song>();
         public string ID { get; set; }
         public string Artist { get; set; }
         public string Title { get; set; }
@@ -33,7 +32,7 @@ namespace RenameKarakoke
 
 
 
-        public static void AddBindingSongs(BindingSource songBindingSource, List<Song> songList)
+        public static void AddBindingSongs(BindingSource songBindingSource, BindingList<Song> songList)
         {
 
             songBindingSource.Clear();

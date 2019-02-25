@@ -1,25 +1,18 @@
 ﻿using System.IO;
+using System.IO.Compression;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
+
 
 namespace RenameKarakoke
 {
     class FileReader : IReader
 
     {
-        //public FolderBrowserDialog _folderBrowserDialog { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        //public OpenFileDialog _openFileDialog { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        //public FileReader(OpenFileDialog fileDialog)
-        //{
-        //    _openFileDialog = fileDialog;
-
-        //    //Ask Daniel About This Implementation of Interface.
-        //    _folderBrowserDialog = null;
-        //}
-
-
+   
+        private string _filePath { get; set; }
         public void Read(string path)
         {
+            _filePath = path;
             var expression = new Regex("^KV");
             var lines = File.ReadLines(path);
             foreach (var line in lines)
@@ -44,8 +37,10 @@ namespace RenameKarakoke
             return new Song(iD, artist, title);
         }
 
-       
-
+        public string GetFilePath() => _filePath;
+        
+            
+        
     }
 
 

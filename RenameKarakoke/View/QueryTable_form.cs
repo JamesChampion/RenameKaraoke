@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RenameKarakoke.Objects;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -17,7 +18,6 @@ namespace RenameKarakoke
         {
             _directoryReader = directoryReader;
             _fileReader = fileReader;
-
             InitializeComponent();
         }
 
@@ -28,7 +28,7 @@ namespace RenameKarakoke
             var location = Location;
             location.X += 350;
             Location = location;
-            Song.AddBindingSongs(songBindingSource, Song.songQueryList);
+            songBindingSource.DataSource = Song.songQueryList;
         }
 
 
@@ -36,92 +36,69 @@ namespace RenameKarakoke
 
         //Submit Button Should Only Show Successful Completion 
         private void Submit_btn_Click(object sender, EventArgs e)
+
         {
-            //Open File Dialog And Get Selected Path --Done
+            string newFileName;
+            bool isCompressed =  Unzip_checkBox.Checked ? true : false;
+            var directoryWriter = new DirectoryWriter(isCompressed, _directoryReader);
             var selectedSongList = GetSelectedSongs();
-            var newFilePath = GetNewFilePath();
-
+            var oldFilePath = _directoryReader.GetFilePath();
+            var newFilePath = directoryWriter.GetNewFilePath();
+            
             //Copy Every File To New Location --Done
-            var oldFilePath = DirectoryReader.FilePath;
-            var directoryReader = new DirectoryReader();
-            directoryReader.DirectoryCopy(oldFilePath, newFilePath);
-            var files = Directory.GetFiles(newFilePath);
-
-            // Unzip Files to New Location....Should This Only Be Done With Incorrect FileNames???
-            foreach (var file in files)
-            {
-               var newFileName =  Path.GetFileNameWithoutExtension(directoryReader.UnzipFile(file));
-            }
+            directoryWriter.DirectoryCopy(oldFilePath, newFilePath, isCompressed);
+            //Eventually, Only Unzip Files With Incorrect Names.
 
 
+            var count = 0;
             foreach (var song in selectedSongList)
             {
                 //FindCorrectSongInfo --DONE
-                var actualSongInfo = FindCorrectSongInfo(song);
-                if(actualSongInfo != null)
+                var actualSongInfo = directoryWriter.FindCorrectSongInfo(song);
+
+                if (actualSongInfo != null)
                 {
-                
+                    var oldFileName = newFilePath + "\\" + song.ID + " - " + song.Artist + " - " + song.Title + ".zip";
+                    if (actualSongInfo.Artist != song.Artist)
+                    {
+                        newFileName = newFilePath + "\\" + actualSongInfo.ID + " - " + song.Artist + " - " + actualSongInfo.Title + ".zip";
+
+                    }
+                    else
+                    {
+                        newFileName = newFilePath + "\\" + actualSongInfo.ID + " - " + actualSongInfo.Artist + " - " + actualSongInfo.Title + ".zip";
+                    }
+
+                    var i = 0;
+                    //Old Song Info Has the correct FileName
+
+
+
+                    if (!File.Exists(newFileName)) //If The File Exisits, its a Good Title
+                    {
+                        File.Copy(oldFileName, newFileName);
+                        File.Delete(oldFileName);
+                        //oldFileName += i++;
+                    }
+
+
+
+
+                }
+                count++;
+
                 //Rename Interior FileComponents
                 //Rename .Zip File
                 //Compress
-                }
-                
+
+
 
             }
+           
+           
         }
 
 
-
-        private void RenameFile()
-        {
-
-        }
-
-
-
-
-        //Method Should Be Moved*******
-        private string GetNewFilePath()
-        {
-            string newFilePath = null;
-            DialogResult result;
-            var folderBrowserDialog = new FolderBrowserDialog()
-            {
-                Description = "Please Select A Destination to Save Renamed Files",
-                ShowNewFolderButton = true
-
-            };
-            result = folderBrowserDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                newFilePath = folderBrowserDialog.SelectedPath;
-            }
-
-
-
-            return newFilePath;
-
-        }
-
-
-
-        //This Method Should Be Moved******
-        private Song FindCorrectSongInfo(Song oldSong)
-        {
-
-            foreach (Song songinfo in Song.songMasterList)
-            {
-                if (songinfo.Title == oldSong.Title)
-                {
-                    return songinfo;
-
-                }
-            }
-            return null;
-
-
-
-        }
         private void Clear_btn_Click(object sender, EventArgs e)
         {
 
@@ -137,12 +114,6 @@ namespace RenameKarakoke
                 row.Cells[0].Value = CheckState.Checked;
             }
         }
-
-
-
-
-
-        //This Method Needs To be Moved To A Controller Class      
         private List<Song> GetSelectedSongs()
         {
             var selectedSongList = new List<Song>();
@@ -169,51 +140,10 @@ namespace RenameKarakoke
             return selectedSongList;
         }
 
-
+        private void SongQueryDataTable_dataGridView_headerClick(object sender, DataGridViewColumnEventHandler e)
+        {
+            Console.WriteLine("This Is Clicked");
+        }
     }
 }
 
-//Commented Old FindSong FX...Keep For Now
-//public void FindSongs(List<Song> selectedSongs)
-//{
-//    bool isRenamed;
-//    DialogResult result;
-//    string newFilePath;
-//    int count = 0;
-//    var songsThatCouldNotBeRenamed = new List<Song>();
-//    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog
-//    {
-//        Description = "Select A Destination to Save",
-//        ShowNewFolderButton = true
-//    };
-//    result = folderBrowserDialog.ShowDialog();
-//    if (result == DialogResult.OK)
-//    {
-//        newFilePath = folderBrowserDialog.SelectedPath;
-//        foreach (Song song in selectedSongs)
-//        {
-//            var item = Song.songMasterList.Find(s => s.Title == song.Title);
-
-//            if (item != null)
-//            {
-//                isRenamed = RenameSong(item, newFilePath);
-//                if (isRenamed)
-//                {
-//                    count++;
-//                }
-//                else
-//                {
-//                    songsThatCouldNotBeRenamed.Add(item);
-//                }
-//            }
-//            isRenamed = false;
-//        }
-//    }
-
-//    MessageBox.Show(count + " Files Out Of " + selectedSongs.Count + " Have Been Renamed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-//    Console.WriteLine("The Songs That Could Not Be Renamed Are");
-//    foreach (Song song in songsThatCouldNotBeRenamed)
-//    {
-//        Console.WriteLine(song.Title + " - " + song.Artist);
-//    }
-//}

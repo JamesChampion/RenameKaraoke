@@ -45,3 +45,17 @@ C:\Users\James\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\RenameKarakok
 C:\Users\James\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\RenameKarakoke.pdb
 C:\Users\James\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.Properties.Resources.resources
 C:\Users\James\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CoreCompileInputs.cache
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe.config
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\RenameKarakoke.pdb
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csprojAssemblyReference.cache
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.QueryTable_form.resources
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.TextFileTable_Form.resources
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.Title_form.resources
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.Properties.Resources.resources
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.GenerateResource.cache
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CoreCompileInputs.cache
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.exe
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.pdb
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\System.Linq.Dynamic.dll
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CopyComplete

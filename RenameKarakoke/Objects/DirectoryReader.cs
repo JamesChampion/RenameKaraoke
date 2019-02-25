@@ -7,22 +7,13 @@ namespace RenameKarakoke
 {
     class DirectoryReader : IReader
     {
-        public static string FilePath { get; set; }
-        //public FolderBrowserDialog _folderBrowserDialog { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        //public OpenFileDialog _openFileDialog { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-        //public DirectoryReader(FolderBrowserDialog folderBrowserDialog)
-        //{
-        //    _folderBrowserDialog = folderBrowserDialog;
-        //    _openFileDialog = null;
-        //}
-
-
+        private string _filePath { get; set; }
+  
         public void Read(string path)
         {
 
             var files = Directory.EnumerateFiles(path);
-            FilePath = path;
+            _filePath = path;
             foreach (var file in files)
             {
                 var fileName = Path.GetFileNameWithoutExtension(file);
@@ -50,48 +41,8 @@ namespace RenameKarakoke
             }
 
         }
-
-        public void DirectoryCopy(string sourceDirName, string destName)
-        {
-            sourceDirName = FilePath;
-            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
-            FileInfo[] files = dir.GetFiles();
-            foreach (FileInfo file in files)
-            {
-                string temppath = Path.Combine(destName, file.Name);
-                file.CopyTo(temppath, false);
-            }
-
-        }
-
-        public string UnzipFile(string zipPath)
-        {
-            string extractPath = null;
-
-            try
-            {
-
-                extractPath = zipPath.Substring(0, zipPath.IndexOf(Path.GetFileNameWithoutExtension(zipPath)));
-                var folderName = extractPath + Path.GetFileNameWithoutExtension(zipPath);
-                CreateNewFolder(folderName);
-                ZipFile.ExtractToDirectory(zipPath, extractPath);
-                File.Delete(zipPath);
-            }
-            catch (System.IO.InvalidDataException e)
-            {
-
-                //A Few Files Are Corrupt.  Decide What to Do With The Corrupted Files. 
-                System.Console.WriteLine(e.Message);
-            }
-            return extractPath;
-        }
-
-        private void CreateNewFolder(string folderName)
-        {
-              
-                var directory = Directory.CreateDirectory(folderName);
-                        
-        }
-
+      
+    
+        public string GetFilePath() => _filePath;
     }
 }

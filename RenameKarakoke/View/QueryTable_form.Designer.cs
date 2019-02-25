@@ -41,6 +41,7 @@
             this.SelectAll_btn = new System.Windows.Forms.Button();
             this.Submit_btn = new System.Windows.Forms.Button();
             this.Clear_btn = new System.Windows.Forms.Button();
+            this.Unzip_checkBox = new System.Windows.Forms.CheckBox();
             this.DataTable_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SongQueryDataTable_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.songBindingSource)).BeginInit();
@@ -99,25 +100,26 @@
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // artistDataGridViewTextBoxColumn
             // 
             this.artistDataGridViewTextBoxColumn.DataPropertyName = "Artist";
             this.artistDataGridViewTextBoxColumn.HeaderText = "Artist";
             this.artistDataGridViewTextBoxColumn.Name = "artistDataGridViewTextBoxColumn";
-            this.artistDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.artistDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // titleDataGridViewTextBoxColumn
             // 
             this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
             this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // songBindingSource
             // 
             this.songBindingSource.DataSource = typeof(RenameKarakoke.Song);
+            this.songBindingSource.Sort = "";
             // 
             // SelectAll_btn
             // 
@@ -152,11 +154,22 @@
             this.Clear_btn.UseVisualStyleBackColor = true;
             this.Clear_btn.Click += new System.EventHandler(this.Clear_btn_Click);
             // 
+            // Unzip_checkBox
+            // 
+            this.Unzip_checkBox.AutoSize = true;
+            this.Unzip_checkBox.Location = new System.Drawing.Point(195, 555);
+            this.Unzip_checkBox.Name = "Unzip_checkBox";
+            this.Unzip_checkBox.Size = new System.Drawing.Size(77, 17);
+            this.Unzip_checkBox.TabIndex = 10;
+            this.Unzip_checkBox.Text = "Unzip Files";
+            this.Unzip_checkBox.UseVisualStyleBackColor = true;
+            // 
             // QueryTable_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 582);
+            this.Controls.Add(this.Unzip_checkBox);
             this.Controls.Add(this.Clear_btn);
             this.Controls.Add(this.Submit_btn);
             this.Controls.Add(this.SelectAll_btn);
@@ -170,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SongQueryDataTable_dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.songBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -180,10 +194,11 @@
         private System.Windows.Forms.BindingSource songBindingSource;
         private System.Windows.Forms.Button SelectAll_btn;
         private System.Windows.Forms.Button Submit_btn;
+        private System.Windows.Forms.Button Clear_btn;
+        private System.Windows.Forms.CheckBox Unzip_checkBox;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn artistDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button Clear_btn;
     }
 }
