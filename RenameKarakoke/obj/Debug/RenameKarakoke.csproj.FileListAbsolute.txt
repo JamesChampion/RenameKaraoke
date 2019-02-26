@@ -59,3 +59,5 @@ C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKar
 C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.pdb
 C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\System.Linq.Dynamic.dll
 C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CopyComplete
+C:\Users\James\source\repos\Renamekaraoke\RenameKarakoke\bin\Debug\System.Linq.Dynamic.dll
+C:\Users\James\source\repos\Renamekaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CopyComplete

@@ -38,66 +38,16 @@ namespace RenameKarakoke
         private void Submit_btn_Click(object sender, EventArgs e)
 
         {
-            string newFileName;
-            bool isCompressed =  Unzip_checkBox.Checked ? true : false;
+            bool isCompressed = Unzip_checkBox.Checked ? true : false;
             var directoryWriter = new DirectoryWriter(isCompressed, _directoryReader);
             var selectedSongList = GetSelectedSongs();
             var oldFilePath = _directoryReader.GetFilePath();
             var newFilePath = directoryWriter.GetNewFilePath();
-            
+
             //Copy Every File To New Location --Done
             directoryWriter.DirectoryCopy(oldFilePath, newFilePath, isCompressed);
-            //Eventually, Only Unzip Files With Incorrect Names.
-
-
-            var count = 0;
-            foreach (var song in selectedSongList)
-            {
-                //FindCorrectSongInfo --DONE
-                var actualSongInfo = directoryWriter.FindCorrectSongInfo(song);
-
-                if (actualSongInfo != null)
-                {
-                    var oldFileName = newFilePath + "\\" + song.ID + " - " + song.Artist + " - " + song.Title + ".zip";
-                    if (actualSongInfo.Artist != song.Artist)
-                    {
-                        newFileName = newFilePath + "\\" + actualSongInfo.ID + " - " + song.Artist + " - " + actualSongInfo.Title + ".zip";
-
-                    }
-                    else
-                    {
-                        newFileName = newFilePath + "\\" + actualSongInfo.ID + " - " + actualSongInfo.Artist + " - " + actualSongInfo.Title + ".zip";
-                    }
-
-                    var i = 0;
-                    //Old Song Info Has the correct FileName
-
-
-
-                    if (!File.Exists(newFileName)) //If The File Exisits, its a Good Title
-                    {
-                        File.Copy(oldFileName, newFileName);
-                        File.Delete(oldFileName);
-                        //oldFileName += i++;
-                    }
-
-
-
-
-                }
-                count++;
-
-                //Rename Interior FileComponents
-                //Rename .Zip File
-                //Compress
-
-
-
-            }
-           
-           
+            directoryWriter.RenameFilesInDirectory(newFilePath, selectedSongList);
         }
-
 
         private void Clear_btn_Click(object sender, EventArgs e)
         {
