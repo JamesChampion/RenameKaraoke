@@ -27,6 +27,11 @@ namespace RenameKarakoke.Objects
                 var correctSongInfo = FindCorrectSongInfo(song);
                 if (correctSongInfo != null)
                 {
+                    if(HasDuplicate(song, correctSongInfo))
+                    {
+                        //Set ID The Same For User To See Duppes
+                        song.ID = correctSongInfo.ID;
+                    }
                     var oldFileName = sourceDir + "\\" + song.ID + " - " + song.Artist + " - " + song.Title + ".zip";
                     if (correctSongInfo.Artist != song.Artist)
                     {
@@ -35,7 +40,7 @@ namespace RenameKarakoke.Objects
                     }
                     else
                     {
-                        newFileName = sourceDi r + "\\" + correctSongInfo.ID + " - " + correctSongInfo.Artist + " - " + correctSongInfo.Title + ".zip";
+                        newFileName = sourceDir + "\\" + correctSongInfo.ID + " - " + correctSongInfo.Artist + " - " + correctSongInfo.Title + ".zip";
                     }
 
 
@@ -52,7 +57,7 @@ namespace RenameKarakoke.Objects
             }
         }
 
-        public string FormatFileName(string sourceDir, Song oldSongInfo, Song correctSongInfo)
+        public string FormatFileName(string sourceDir, Song song)
         {
             var oldFileName = AddExtension(sourceDir + "\\" + oldSongInfo.ID + " - " + oldSongInfo.Artist + " - " + oldSongInfo.Title);
             string correctFileName = "";
@@ -69,7 +74,10 @@ namespace RenameKarakoke.Objects
             return correctFileName;
         }
 
-
+        private bool HasDuplicate(Song oldSongInfo, Song newSongInfo)
+        {
+            return oldSongInfo.Artist == newSongInfo.Artist ? true : false;
+        }
         public string GetNewFilePath()
         {
             string newFilePath = null;
