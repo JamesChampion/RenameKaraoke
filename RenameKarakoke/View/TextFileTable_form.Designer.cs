@@ -110,6 +110,7 @@
             this.Name = "TextFileTable_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Master List";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TextFileTable_Form_FormClosed);
             this.Load += new System.EventHandler(this.TextFileTable_form_Load);
             this.DataTable_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SongMasterDataTable_dataGridView)).EndInit();

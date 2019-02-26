@@ -43,6 +43,7 @@ namespace RenameKarakoke
             this.Quit_btn = new System.Windows.Forms.Button();
             this.Input_panel = new System.Windows.Forms.Panel();
             this.Execution_panel = new System.Windows.Forms.Panel();
+            this.helpProvider = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.Karaoke_pictureBox)).BeginInit();
             this.Input_panel.SuspendLayout();
             this.Execution_panel.SuspendLayout();
@@ -109,7 +110,6 @@ namespace RenameKarakoke
             this.TextFile_btn.TabIndex = 5;
             this.TextFile_btn.Text = "Browse";
             this.TextFile_btn.UseVisualStyleBackColor = true;
-           // this.TextFile_btn.Click += new System.EventHandler(this.TextFile_btn_Click);
             // 
             // Directory_btn
             // 
@@ -178,6 +178,10 @@ namespace RenameKarakoke
             this.Execution_panel.Size = new System.Drawing.Size(529, 63);
             this.Execution_panel.TabIndex = 13;
             // 
+            // helpProvider
+            // 
+            this.helpProvider.HelpNamespace = "C:\\Users\\championj\\source\\repos\\RenameKaraoke\\RenameKarakoke\\View\\HelpFile.html";
+            // 
             // Title_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,8 +192,14 @@ namespace RenameKarakoke
             this.Controls.Add(this.Input_panel);
             this.Controls.Add(this.Karaoke_pictureBox);
             this.Controls.Add(this.Title_lbl);
+            this.HelpButton = true;
+            this.helpProvider.SetHelpKeyword(this, "Help.html");
+            this.helpProvider.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Title_form";
+            this.helpProvider.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Renaming Wizard";
             ((System.ComponentModel.ISupportInitialize)(this.Karaoke_pictureBox)).EndInit();
@@ -214,6 +224,7 @@ namespace RenameKarakoke
         private Button Quit_btn;
         private Panel Input_panel;
         private Panel Execution_panel;
+        private HelpProvider helpProvider;
     }
 }
 

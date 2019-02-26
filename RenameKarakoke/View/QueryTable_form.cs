@@ -1,7 +1,8 @@
 ﻿using RenameKarakoke.Objects;
+using RenameKarakoke.View;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -10,15 +11,16 @@ namespace RenameKarakoke
     public partial class QueryTable_form : Form
     {
         private readonly IReader _directoryReader;
-        private readonly IReader _fileReader;
-
-
-        public QueryTable_form(IReader directoryReader, IReader fileReader)
+        private TextFileTable_Form _textFileTable;
+        private LoadingScreen _loadingScreen;
+        public QueryTable_form(IReader directoryReader, TextFileTable_Form textFileTable)
 
         {
             _directoryReader = directoryReader;
-            _fileReader = fileReader;
+            _textFileTable = textFileTable;
             InitializeComponent();
+            _loadingScreen = new LoadingScreen();
+            
         }
 
 
@@ -31,22 +33,33 @@ namespace RenameKarakoke
             songBindingSource.DataSource = Song.songQueryList;
         }
 
-
-
-
         //Submit Button Should Only Show Successful Completion 
-        private void Submit_btn_Click(object sender, EventArgs e)
+        private async void Submit_btn_Click(object sender, EventArgs e)
 
         {
-            bool isCompressed = Unzip_checkBox.Checked ? true : false;
+
+            bool isCompressed = true;
+            if (Unzip_checkBox.CheckState == CheckState.Checked)
+            {
+                isCompressed = false;
+            }
+            
             var directoryWriter = new DirectoryWriter(isCompressed, _directoryReader);
             var selectedSongList = GetSelectedSongs();
             var oldFilePath = _directoryReader.GetFilePath();
             var newFilePath = directoryWriter.GetNewFilePath();
+            _textFileTable.Hide();
+            Hide();
+            _loadingScreen.Show();
+            
+            
+            
+            await Task.Run(() => directoryWriter.DirectoryCopy(oldFilePath, newFilePath, isCompressed));
+            int fileCount = 0;
+            await Task.Run(() => fileCount = directoryWriter.RenameFilesInDirectory(newFilePath, selectedSongList));
+            MessageBox.Show(fileCount + " files Renamed!", "File Renamed", MessageBoxButtons.OK);
+            _loadingScreen.Hide();
 
-            //Copy Every File To New Location --Done
-            directoryWriter.DirectoryCopy(oldFilePath, newFilePath, isCompressed);
-            directoryWriter.RenameFilesInDirectory(newFilePath, selectedSongList);
         }
 
         private void Clear_btn_Click(object sender, EventArgs e)
@@ -92,7 +105,14 @@ namespace RenameKarakoke
 
         private void SongQueryDataTable_dataGridView_headerClick(object sender, DataGridViewColumnEventHandler e)
         {
+            //Insert Sorting 
             Console.WriteLine("This Is Clicked");
+        }
+
+        private void QueryTable_form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Song.songQueryList.Clear();
+            songBindingSource.Clear();
         }
     }
 }

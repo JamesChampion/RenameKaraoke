@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.IO.Compression;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -8,10 +9,14 @@ namespace RenameKarakoke
     class DirectoryReader : IReader
     {
         private string _filePath { get; set; }
-  
+
+        //public DirectoryReader(ISongListManager songListManager)
+        //{
+        //}
+
+        // Try having this method return the list of songs
         public void Read(string path)
         {
-
             var files = Directory.EnumerateFiles(path);
             _filePath = path;
             foreach (var file in files)
@@ -32,17 +37,13 @@ namespace RenameKarakoke
             }
             else
             {
-
                 var iD = categories[0];
                 var artist = categories[1];
                 var title = categories[2];
                 return new Song(iD, artist, title);
-
             }
-
         }
-      
-    
+
         public string GetFilePath() => _filePath;
     }
 }

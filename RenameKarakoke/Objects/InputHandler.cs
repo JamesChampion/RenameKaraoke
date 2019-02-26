@@ -7,27 +7,20 @@ namespace RenameKarakoke
     public class InputHandler
     {
         private readonly IReader _fileReader;
-        private readonly IReader _directoryReader;
         private string FileName { get; set; }
 
-        public InputHandler(IReader directoryReader, IReader fileReader)
+        public InputHandler(IReader fileReader)
         {
-            _directoryReader = directoryReader;
             _fileReader = fileReader;
         }
 
-
         public bool IsValidInput(IEnumerable<TextBox> textBoxes)
         {
-            var filteredResult = textBoxes.Where(t => t.TextLength == 0);
-            using (var enumerator = filteredResult.GetEnumerator())
-            {
-                return !enumerator.MoveNext();
-            }
+            return !textBoxes.Any(t => t.TextLength == 0);
         }
+
         public void UpdateField(TextBox field, UserResponse userButtonResponse)
         {
-            
             if (IsValidDialogResponse(userButtonResponse))
                 field.Text = GetUserDialogInput();
             field.Refresh();
@@ -36,7 +29,7 @@ namespace RenameKarakoke
         public bool IsValidDialogResponse(UserResponse userButtonResponse)
         {
             DialogResult result;
-            switch ((userButtonResponse))
+            switch (userButtonResponse)
             {
                 case UserResponse.BrowseFile:
                     OpenFileDialog openFileDialog = new OpenFileDialog
@@ -46,7 +39,7 @@ namespace RenameKarakoke
                     };
                     result = openFileDialog.ShowDialog();
                      FileName = openFileDialog.FileName;
-                    if (IsValidFile(FileName))
+                    if (IsValidFileName(FileName))
                     {
                         return result == DialogResult.OK;
                     }
@@ -70,15 +63,11 @@ namespace RenameKarakoke
                     FileName = folderBrowserDialog.SelectedPath;
                     return result == DialogResult.OK;
             }
-
-
-
         }
 
         public string GetUserDialogInput() => FileName;
 
-        private bool IsValidFile(string fileName) => fileName.EndsWith(".txt") && !string.IsNullOrWhiteSpace(fileName) ? true : false;
-
+        private bool IsValidFileName(string fileName) => fileName.EndsWith(".txt") && !string.IsNullOrWhiteSpace(fileName);
     }
 }
     

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Linq.Dynamic;
-using System.Collections.Generic;
-
 namespace RenameKarakoke
 {
     public partial class TextFileTable_Form : Form
@@ -37,6 +34,10 @@ namespace RenameKarakoke
             Console.WriteLine("The Header was Clicked");
         }
 
-       
+        private void TextFileTable_Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Song.songMasterList.Clear();
+            songMasterBindingSource.Clear();
+        }
     }
 }

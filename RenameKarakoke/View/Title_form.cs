@@ -1,5 +1,4 @@
-
-using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,32 +17,28 @@ namespace RenameKarakoke
         {
             _directoryReader = directoryReader;
             _fileReader = fileReader;
-            _inputHandler = new InputHandler(_directoryReader, _fileReader);
+            _inputHandler = new InputHandler(_fileReader);
             InitializeComponent();
             TextFile_btn.Click += (s, e) => {_inputHandler.UpdateField(TextFile_txtBox, UserResponse.BrowseFile); };
             Directory_btn.Click += (s, e) => { _inputHandler.UpdateField(Directory_txtBox, UserResponse.BrowseDirectory); };
+            
         }
-
 
         //Read Both Inputs and Show the Form If Inputs Aren't Blank
         private void Execute_btn_Click(object sender, System.EventArgs e)
         {
-            // I Must Construct The Forms Here So If it is Closed, It will Open Again
-            _queryTable = new QueryTable_form(_directoryReader, _fileReader);
+       
             _textFileTable = new TextFileTable_Form(_fileReader);
+            _queryTable = new QueryTable_form(_directoryReader, _textFileTable);
             var allTextBoxes = Input_panel.Controls.OfType<TextBox>();
             if (_inputHandler.IsValidInput(allTextBoxes))
             {
-                
-                
-                    var fileName = TextFile_txtBox.Text;
-                    _fileReader.Read(fileName);
-                    _textFileTable.Show();
-                    var dirPath = Directory_txtBox.Text;
-                    _directoryReader.Read(dirPath);
-                    _queryTable.Show();
-                
-               
+                var fileName = TextFile_txtBox.Text;
+                _fileReader.Read(fileName);
+                _textFileTable.Show();
+                var dirPath = Directory_txtBox.Text;
+                _directoryReader.Read(dirPath);
+                _queryTable.Show();
             }
             else
             {
@@ -66,6 +61,6 @@ namespace RenameKarakoke
             }
         }
 
-
+     
     }
 }

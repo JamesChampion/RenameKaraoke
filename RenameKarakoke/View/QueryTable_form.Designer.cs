@@ -178,6 +178,7 @@
             this.Name = "QueryTable_form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Files To Be Renamed";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.QueryTable_form_FormClosed);
             this.Load += new System.EventHandler(this.QueryTable_form_Load);
             this.DataTable_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SongQueryDataTable_dataGridView)).EndInit();

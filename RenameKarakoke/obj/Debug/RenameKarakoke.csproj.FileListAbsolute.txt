@@ -61,3 +61,4 @@ C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\System.Li
 C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CopyComplete
 C:\Users\James\source\repos\Renamekaraoke\RenameKarakoke\bin\Debug\System.Linq.Dynamic.dll
 C:\Users\James\source\repos\Renamekaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CopyComplete
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.View.LoadingScreen.resources
