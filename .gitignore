@@ -1,0 +1,7 @@
+#GitIgnoreFile
+
+#Ignore Build Files
+bin/
+
+#ignore .cachefiles
+*.cache
