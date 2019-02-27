@@ -180,7 +180,8 @@ namespace RenameKarakoke
             // 
             // helpProvider
             // 
-            this.helpProvider.HelpNamespace = "C:\\Users\\championj\\source\\repos\\RenameKaraoke\\RenameKarakoke\\View\\HelpFile.html";
+            this.helpProvider.HelpNamespace = "C:\\Users\\championj\\source\\repos\\RenameKaraoke\\RenameKarakoke\\Help File\\HelpFile.h" +
+    "tml";
             // 
             // Title_form
             // 

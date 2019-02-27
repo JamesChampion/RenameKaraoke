@@ -1,0 +1,19 @@
+body{
+    background-color:azure;
+    font-size: 110%;
+}
+h1{
+    font-size: 4em;
+    text-align: center;
+}
+.title {
+    text-decoration: underline;
+    font-size: 200%;
+    margin-left:2em;
+    
+}
+li{
+    margin-left: 6em;
+    margin-top: 1em;
+    
+}
