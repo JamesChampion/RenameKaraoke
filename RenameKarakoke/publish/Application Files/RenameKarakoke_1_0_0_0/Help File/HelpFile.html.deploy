@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Karaoke Renaming Tool Help File</h1>
+    <ol>
+        <li>
+            Importing Help
+            <ul>
+                <li>Make sure that the textfile that is imported has only one entry per line</li>
+                <li>The file should be in the format "ID - Artist - Title.kmh"</li>
+                <li>If unformated file names are caught, they will be flagged for user to see</li>
+                <li>Additional songs can be added to the master song list as long as their format is correct</li>
+            </ul>
+        </li>
+        <li>
+            Processing Help
+            <ul>
+                <li>Files will be renamed based upon song title</li>
+                <li>If a song has the same title, new files with keep their artist, but ID will be the same to allow users to see duplicates</li>
+            </ul>
+        </li>
+
+    </ol>
+
+
+</body>
+</html>

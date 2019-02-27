@@ -163,6 +163,7 @@
             this.Unzip_checkBox.TabIndex = 10;
             this.Unzip_checkBox.Text = "Unzip Files";
             this.Unzip_checkBox.UseVisualStyleBackColor = true;
+            this.Unzip_checkBox.Visible = false;
             // 
             // QueryTable_form
             // 
