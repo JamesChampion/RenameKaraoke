@@ -65,15 +65,19 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Microphone.ico</ApplicationIcon>
+    <ApplicationIcon>Images\Microphone.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -86,12 +90,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\DataSource.cs" />
+    <Compile Include="Objects\DataSet.cs" />
     <Compile Include="Objects\DirectoryReader.cs" />
     <Compile Include="Objects\DirectoryWriter.cs" />
     <Compile Include="Objects\FileReader.cs" />
-    <Compile Include="Objects\IReader.cs" />
     <Compile Include="Model\Song.cs" />
-    <Compile Include="UserResponse.cs" />
+    <Compile Include="Enum\UserResponse.cs" />
+    <Compile Include="Objects\SongListManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,44 +110,44 @@
     <Compile Include="View\LoadingScreen.Designer.cs">
       <DependentUpon>LoadingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\QueryTable_form.cs">
+    <Compile Include="View\QueryTable_view.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\QueryTable_form.Designer.cs">
-      <DependentUpon>QueryTable_form.cs</DependentUpon>
+    <Compile Include="View\QueryTable_view.Designer.cs">
+      <DependentUpon>QueryTable_view.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TextFileTable_form.cs">
+    <Compile Include="View\TextTable_view.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\TextFileTable_form.Designer.cs">
-      <DependentUpon>TextFileTable_form.cs</DependentUpon>
+    <Compile Include="View\TextTable_view.Designer.cs">
+      <DependentUpon>TextTable_view.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Title_form.cs">
+    <Compile Include="View\Title_view.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Title_form.Designer.cs">
-      <DependentUpon>Title_form.cs</DependentUpon>
+    <Compile Include="View\Title_view.Designer.cs">
+      <DependentUpon>Title_view.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\LoadingScreen.resx">
       <DependentUpon>LoadingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\QueryTable_form.resx">
-      <DependentUpon>QueryTable_form.cs</DependentUpon>
+    <EmbeddedResource Include="View\QueryTable_view.resx">
+      <DependentUpon>QueryTable_view.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\TextFileTable_form.resx">
-      <DependentUpon>TextFileTable_form.cs</DependentUpon>
+    <EmbeddedResource Include="View\TextTable_view.resx">
+      <DependentUpon>TextTable_view.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Title_form.resx">
-      <DependentUpon>Title_form.cs</DependentUpon>
+    <EmbeddedResource Include="View\Title_view.resx">
+      <DependentUpon>Title_view.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="Config\packages.config" />
     <None Include="Properties\DataSources\Song.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -155,7 +161,7 @@
     <None Include="RenameKarakoke_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Config\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Karaoke.png" />
@@ -175,7 +181,7 @@
   <ItemGroup>
     <Content Include="Help File\HelpFile.html" />
     <Content Include="Help File\style.css" />
-    <Content Include="Microphone.ico" />
+    <Content Include="Images\Microphone.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -62,3 +62,9 @@ C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKar
 C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.csproj.CopyComplete
 C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.exe
 C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.pdb
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\RenameKarakoke.exe.manifest
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\RenameKarakoke.application
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.exe.manifest
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\obj\Debug\RenameKarakoke.application
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\System.ValueTuple.dll
+C:\Users\championj\source\repos\RenameKaraoke\RenameKarakoke\bin\Debug\System.ValueTuple.xml

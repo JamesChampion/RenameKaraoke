@@ -2,73 +2,78 @@
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RenameKarakoke.Objects
 {
     class DirectoryWriter
     {
-        private bool _isCompressed;
-        private IReader _directoryReader;
-        private string _filePath;
-        public DirectoryWriter(bool isCompressed, IReader directoryReader)
+        private bool _isCompressed { get; set; }
+   
+        private readonly DataSet _dataSet;
+ 
+        public DirectoryWriter(bool isCompressed, DataSet dataSet)
         {
             _isCompressed = isCompressed;
-            _directoryReader = directoryReader;
-            _filePath = directoryReader.GetFilePath();
+            _dataSet = dataSet;
         }
 
         public int RenameFilesInDirectory(string sourceDir, List<Song> selectedSongList)
         {
             var count = 0;
             string newFileName;
-            foreach (var song in selectedSongList)
+            if (sourceDir != null)
             {
-                //FindCorrectSongInfo --DONE   -----If We Have To Extract, They Wont Have .Zip @ the End Of The FileName
-                var correctSongInfo = FindCorrectSongInfo(song);
-                if (correctSongInfo != null)
+                foreach (var song in selectedSongList)
                 {
-                    var oldFileName = FormatFileName(sourceDir, song);
-                    if (HasDuplicate(song, correctSongInfo))
+                    var correctSongInfo = FindCorrectSongInfo(song);
+                    if (correctSongInfo != null)
                     {
-                        song.ID = correctSongInfo.ID;
-                        newFileName = FormatFileName(sourceDir, song);
-
-                    }
-                    else
-                    {
+                        var oldFileName = FormatFileName(sourceDir, song);
+                        if (HasDuplicate(song, correctSongInfo))
+                        {
+                            ReplaceDuplicateSongID(song, correctSongInfo);
+                        }
                         newFileName = FormatFileName(sourceDir, correctSongInfo);
-                    }
 
-                    //Old Song Info Has the correct FileName
+                        //If File.Exists No Need To Rename
+                        if (File.Exists(newFileName)) continue;
 
-                    if (!File.Exists(newFileName)) //If The File Exisits, its a Good Title
-                    {
+
                         File.Copy(oldFileName, newFileName);
                         File.Delete(oldFileName);
                         count++;
-
                     }
                 }
-               
             }
             return count;
         }
 
         public string FormatFileName(string sourceDir, Song song)
         {
-            var fileName = AddExtension(sourceDir + "\\" + song.ID + " - " + song.Artist + " - " + song.Title);
+            var fileName = sourceDir + "\\" + song.ID + " - " + song.Artist + " - " + song.Title;
+            if (_isCompressed)
+            {
+                AddZipExtension(fileName);
+            }
+            
             return fileName;
         }
 
-        private bool HasDuplicate(Song oldSongInfo, Song newSongInfo)
+        private bool HasDuplicate(Song oldSong, Song newSong)
         {
-            return oldSongInfo.Artist == newSongInfo.Artist ? true : false;
+            return oldSong.Artist == newSong.Artist;
         }
-        public string GetNewFilePath()
+
+        private void ReplaceDuplicateSongID(Song oldSongInfo, Song newSongInfo)
         {
-            string newFilePath = null;
+            
+            newSongInfo.Artist = oldSongInfo.Artist;
+            newSongInfo.Title = oldSongInfo.Title;
+        }
+        public string GetDirectorySavePath()
+        {
+            string savePath = null;
             DialogResult result;
             var folderBrowserDialog = new FolderBrowserDialog()
             {
@@ -79,78 +84,96 @@ namespace RenameKarakoke.Objects
             result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                newFilePath = folderBrowserDialog.SelectedPath;
+                savePath = folderBrowserDialog.SelectedPath;
             }
 
-
-
-            return newFilePath;
+            return savePath;
 
         }
         public Song FindCorrectSongInfo(Song oldSong)
         {
-            return Song.songMasterList.FirstOrDefault(s => s.Title == oldSong.Title);
+            return _dataSet.MasterSongList.FirstOrDefault(s => s.Title == oldSong.Title);
         }
 
-        public string AddExtension(string fileName)
+        public void AddZipExtension(string fileName)
         {
-            if (_isCompressed)
-            {
-                fileName += ".zip";
-            }
-            return fileName;
+               fileName += ".zip";         
         }
-        public void DirectoryCopy(string sourceDirName, string destName, bool isCompressed)
+        public void DirectoryCopy(string sourceDirectoryPath, string destDirectoryPath)
         {
-            sourceDirName = _filePath;
-            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
-            FileInfo[] files = dir.GetFiles();
-            foreach (FileInfo file in files)
+            if (destDirectoryPath != null)
             {
-                //Change All .Zip to .Zip
-                var fileExtension = file.Name.Substring(file.Name.IndexOf('.'));
-                file.Name.Replace(fileExtension, ".zip");
-                string temppath = Path.Combine(destName, file.Name);
-               file.CopyTo(temppath, false);
- 
-            }
-            if (!isCompressed)
-            {
-                UnzipFiles(destName);
-            }
+                var directoryInfo = new DirectoryInfo(sourceDirectoryPath);
+                FileInfo[] files = directoryInfo.GetFiles();
+                foreach (FileInfo file in files)
+                {
+                    //Change All .Zip to .zip
+                    var fileExtension = GetFileExtension(file);
+                    var newFileName = file.Name.Replace(fileExtension, ".zip");
+                    var newDestPath = Path.Combine(destDirectoryPath, newFileName);
+                    file.CopyTo(newDestPath, false);
 
+                }
+                if (_isCompressed)
+                {
+                    UnzipFiles(destDirectoryPath);
+                    _isCompressed = false;
+                }
+            }
 
         }
         private void CreateNewFolder(string folderName)
         {
 
-            var directory = Directory.CreateDirectory(folderName);
+            Directory.CreateDirectory(folderName);
 
         }
-        public void UnzipFiles(string zipPath)
+        public void UnzipFiles(string sourceDirPath)
         {
-
-            var files = Directory.GetFiles(zipPath);
-            foreach (var file in files)
+            var directoryInfo = new DirectoryInfo(sourceDirPath);
+            FileInfo[] files = directoryInfo.GetFiles();
+            foreach (FileInfo file in files)
             {
-                var folderName = zipPath + "\\" + Path.GetFileNameWithoutExtension(file);
-                var oldFileName = zipPath + "\\" + Path.GetFileNameWithoutExtension(file) + ".zip";
+                var sourceFilePath = sourceDirPath + "\\" + file.Name;
+                var destFilePath = sourceDirPath + "\\" + Path.GetFileNameWithoutExtension(file.Name);
                 try
                 {
-                    CreateNewFolder(folderName);
-                    ZipFile.ExtractToDirectory(oldFileName, folderName);
-                    File.Delete(oldFileName);
+                    CreateNewFolder(destFilePath);
+                   
+                    ZipFile.ExtractToDirectory(sourceFilePath, destFilePath);
+                    File.Delete(sourceFilePath);
                 }
-                catch (System.IO.InvalidDataException e)
+                catch (InvalidDataException)
                 {
-                    var corruptFileName = oldFileName.Substring(oldFileName.IndexOf(".zip")) + "---Corrupt.zip";
-                    File.Copy(oldFileName, corruptFileName);
-                    File.Delete(oldFileName);
-                    //A Few Files Are Corrupt.  Decide What to Do With The Corrupted Files. Probably Should Rename With Flag
-                    System.Console.WriteLine(e.Message);
+                    var corruptFileName = ReplaceCorruptedFileName(sourceFilePath);
+                    File.Copy(sourceFilePath, corruptFileName);
+                    File.Delete(sourceFilePath);
                 }
             }
         }
+        private string GetFileExtension(FileInfo fileInfo)
+        {
+            var fileExtension = fileInfo.Name.Substring(fileInfo.Name.IndexOf('.'));
+            return fileExtension;
+        }
+
+        private string ReplaceCorruptedFileName(string sourceFilePath)
+        {
+            var corruptFileName = sourceFilePath.Substring(sourceFilePath.IndexOf(".zip")) + "---Corrupt.zip";
+            return corruptFileName;
+
+        }
+
+        private void RenameFolderContents(string sourceZipPath, string fileName)
+        {
+            
+        }
+
+
+
+
+       
+
     }
 }
 
