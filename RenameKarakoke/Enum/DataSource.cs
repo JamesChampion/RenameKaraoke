@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RenameKarakoke
+namespace RenameKarakoke.Enum
 {
-    public enum UserResponse
+    public enum DataSource
     {
-        BrowseFile,
-        BrowseDirectory
+        textFile,
+        directory
     }
-
-
 }

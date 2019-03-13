@@ -13,6 +13,8 @@ namespace RenameKarakoke.View
             _loadingProgressBar.Show();
         }
 
+        
+
 
     }
 }

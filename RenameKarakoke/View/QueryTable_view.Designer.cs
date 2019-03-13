@@ -28,38 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryTable_form));
             this.DataTable_panel = new System.Windows.Forms.Panel();
-            this.SongQueryDataTable_dataGridView = new System.Windows.Forms.DataGridView();
-            this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.artistDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.songBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Query_dataTableView = new System.Windows.Forms.DataGridView();
             this.SelectAll_btn = new System.Windows.Forms.Button();
             this.Submit_btn = new System.Windows.Forms.Button();
             this.Clear_btn = new System.Windows.Forms.Button();
             this.Unzip_checkBox = new System.Windows.Forms.CheckBox();
             this.DataTable_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SongQueryDataTable_dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.songBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Query_dataTableView)).BeginInit();
             this.SuspendLayout();
             // 
             // DataTable_panel
             // 
-            this.DataTable_panel.Controls.Add(this.SongQueryDataTable_dataGridView);
+            this.DataTable_panel.Controls.Add(this.Query_dataTableView);
             this.DataTable_panel.Location = new System.Drawing.Point(3, 5);
             this.DataTable_panel.Name = "DataTable_panel";
             this.DataTable_panel.Size = new System.Drawing.Size(756, 538);
             this.DataTable_panel.TabIndex = 0;
             // 
-            // SongQueryDataTable_dataGridView
+            // Query_dataTableView
             // 
-            this.SongQueryDataTable_dataGridView.AllowUserToAddRows = false;
-            this.SongQueryDataTable_dataGridView.AutoGenerateColumns = false;
-            this.SongQueryDataTable_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Query_dataTableView.AllowUserToAddRows = false;
+            this.Query_dataTableView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -67,59 +59,14 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SongQueryDataTable_dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.SongQueryDataTable_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SongQueryDataTable_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CheckBox,
-            this.iDDataGridViewTextBoxColumn,
-            this.artistDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn});
-            this.SongQueryDataTable_dataGridView.DataSource = this.songBindingSource;
-            this.SongQueryDataTable_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SongQueryDataTable_dataGridView.Location = new System.Drawing.Point(0, 0);
-            this.SongQueryDataTable_dataGridView.Name = "SongQueryDataTable_dataGridView";
-            this.SongQueryDataTable_dataGridView.RowHeadersVisible = false;
-            this.SongQueryDataTable_dataGridView.Size = new System.Drawing.Size(756, 538);
-            this.SongQueryDataTable_dataGridView.TabIndex = 0;
-            // 
-            // CheckBox
-            // 
-            this.CheckBox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CheckBox.FalseValue = "0";
-            this.CheckBox.FillWeight = 10F;
-            this.CheckBox.HeaderText = "";
-            this.CheckBox.Name = "CheckBox";
-            this.CheckBox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CheckBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.CheckBox.ToolTipText = "Check A Box";
-            this.CheckBox.TrueValue = "1";
-            this.CheckBox.Width = 24;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // artistDataGridViewTextBoxColumn
-            // 
-            this.artistDataGridViewTextBoxColumn.DataPropertyName = "Artist";
-            this.artistDataGridViewTextBoxColumn.HeaderText = "Artist";
-            this.artistDataGridViewTextBoxColumn.Name = "artistDataGridViewTextBoxColumn";
-            this.artistDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // songBindingSource
-            // 
-            this.songBindingSource.DataSource = typeof(RenameKarakoke.Song);
-            this.songBindingSource.Sort = "";
+            this.Query_dataTableView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.Query_dataTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Query_dataTableView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Query_dataTableView.Location = new System.Drawing.Point(0, 0);
+            this.Query_dataTableView.Name = "Query_dataTableView";
+            this.Query_dataTableView.RowHeadersVisible = false;
+            this.Query_dataTableView.Size = new System.Drawing.Size(756, 538);
+            this.Query_dataTableView.TabIndex = 0;
             // 
             // SelectAll_btn
             // 
@@ -179,11 +126,9 @@
             this.Name = "QueryTable_form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Files To Be Renamed";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.QueryTable_form_FormClosed);
             this.Load += new System.EventHandler(this.QueryTable_form_Load);
             this.DataTable_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SongQueryDataTable_dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.songBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Query_dataTableView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,15 +137,10 @@
         #endregion
 
         private System.Windows.Forms.Panel DataTable_panel;
-        private System.Windows.Forms.DataGridView SongQueryDataTable_dataGridView;
-        private System.Windows.Forms.BindingSource songBindingSource;
+        private System.Windows.Forms.DataGridView Query_dataTableView;
         private System.Windows.Forms.Button SelectAll_btn;
         private System.Windows.Forms.Button Submit_btn;
         private System.Windows.Forms.Button Clear_btn;
         private System.Windows.Forms.CheckBox Unzip_checkBox;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn artistDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
     }
 }

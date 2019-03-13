@@ -48,6 +48,7 @@ namespace RenameKarakoke
             this.Input_panel.SuspendLayout();
             this.Execution_panel.SuspendLayout();
             this.SuspendLayout();
+ 
             // 
             // Title_lbl
             // 
