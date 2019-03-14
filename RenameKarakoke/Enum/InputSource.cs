@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RenameKarakoke.Enum
 {
-    public enum DataSource
+    public enum InputSource
     {
         textFile,
         directory

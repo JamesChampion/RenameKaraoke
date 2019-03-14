@@ -90,10 +90,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\DataSource.cs" />
+    <Compile Include="Enum\InputSource.cs" />
     <Compile Include="Objects\DataSet.cs" />
     <Compile Include="Objects\DirectoryReader.cs" />
     <Compile Include="Objects\DirectoryWriter.cs" />
+    <Compile Include="Objects\FileCompressionHelper.cs" />
     <Compile Include="Objects\FileReader.cs" />
     <Compile Include="Model\Song.cs" />
     <Compile Include="Enum\UserResponse.cs" />
@@ -104,6 +105,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Objects\InputHandler.cs" />
+    <Compile Include="TestUnzipping.cs" />
     <Compile Include="View\LoadingScreen.cs">
       <SubType>Form</SubType>
     </Compile>

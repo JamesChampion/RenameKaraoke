@@ -9,7 +9,7 @@ namespace RenameKarakoke.Objects
 {
     public class DataSet
     {
-        private DataSource _dataSource { get; set; }
+        private InputSource _dataSource { get; set; }
         public string SongDirPath { get; set; }
         public List<Song> MasterSongList { get; set; }
         public List<Song> QuerySongList { get; set; }
@@ -21,7 +21,7 @@ namespace RenameKarakoke.Objects
             SongDirPath = songDirPath;
         }
 
-        public DataTable GetDataTable(DataSource dataSource)
+        public DataTable GetDataTable(InputSource dataSource)
         {
             var dataTable = new DataTable();
             InitalizeDataTable(dataTable, dataSource);
@@ -30,7 +30,7 @@ namespace RenameKarakoke.Objects
         }
 
 
-        private void InitalizeDataTable(DataTable dataTable, DataSource dataSource)
+        private void InitalizeDataTable(DataTable dataTable, InputSource dataSource)
         {
             
             SetTableName(dataTable, dataSource);
@@ -45,16 +45,16 @@ namespace RenameKarakoke.Objects
 
         }
 
-        private void SetTableName(DataTable dt, DataSource dataSource)
+        private void SetTableName(DataTable dt, InputSource dataSource)
         {
             string tableName = "";
             switch (dataSource)
             {
-                case DataSource.textFile:
+                case InputSource.textFile:
                     tableName = "Master Song Table";
                     break;
 
-                case DataSource.directory:
+                case InputSource.directory:
                     tableName = "Query Song Table";
                     break;  
 

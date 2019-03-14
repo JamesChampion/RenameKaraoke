@@ -7,12 +7,12 @@ namespace RenameKarakoke
     public partial class TextFileTable_Form : Form
     {
         private readonly DataSet _dataSet;
-        private DataSource _dataSource { get; set; }
+        private InputSource _dataSource { get; set; }
 
         public TextFileTable_Form(DataSet dataSet)
         {
             this._dataSet = dataSet;
-            _dataSource = DataSource.textFile;
+            _dataSource = InputSource.textFile;
             InitializeComponent();
         }
 

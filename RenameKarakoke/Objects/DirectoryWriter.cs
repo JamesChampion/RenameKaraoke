@@ -112,12 +112,6 @@ namespace RenameKarakoke.Objects
                     var newFileName = file.Name.Replace(fileExtension, ".zip");
                     var newDestPath = Path.Combine(destDirectoryPath, newFileName);
                     file.CopyTo(newDestPath, false);
-
-                }
-                if (_isCompressed)
-                {
-                    UnzipFiles(destDirectoryPath);
-                    _isCompressed = false;
                 }
             }
 

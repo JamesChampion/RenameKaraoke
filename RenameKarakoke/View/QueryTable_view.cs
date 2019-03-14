@@ -15,14 +15,14 @@ namespace RenameKarakoke
         private readonly DataSet _dataSet;
         private LoadingScreen _loadingScreen;
         private readonly string _songDirPath;
-        private DataSource _dataSource { get; set; }
+        private InputSource _dataSource { get; set; }
 
         public QueryTable_form(string dirPath, DataSet dataset)
 
         {
             _dataSet = dataset;
             _songDirPath = dirPath;
-            _dataSource = DataSource.directory;
+            _dataSource = InputSource.directory;
             _loadingScreen = new LoadingScreen();
             InitializeComponent();
 
@@ -60,11 +60,23 @@ namespace RenameKarakoke
             {
                 Hide();
                 _loadingScreen.Show();
-                await Task.Run(() => directoryWriter.DirectoryCopy(currentDirPath, saveDirPath));
-                int fileCount = 0;
-                await Task.Run(() => fileCount = directoryWriter.RenameFilesInDirectory(saveDirPath, selectedSongList));
-                _loadingScreen.Hide();
-                MessageBox.Show(fileCount + " files Renamed!", "File Renamed", MessageBoxButtons.OK);
+                if (isCompressed)
+                {
+                    var fileCompressionHelper = new FileCompressionHelper(currentDirPath, saveDirPath, selectedSongList);
+                }
+                
+                    //Find The Correct Song Info, 
+                    //If its a match, check to see if they want to unzip it
+                    //If so, Rename/Unzip Then rename the interior contents and compress
+                    //Else, Rename The File
+                    //After All Files Are renamed, Copy Files That were not found into the new Location
+                
+
+                //await Task.Run(() => directoryWriter.DirectoryCopy(currentDirPath, saveDirPath));
+                //int fileCount = 0;
+                //await Task.Run(() => fileCount = directoryWriter.RenameFilesInDirectory(saveDirPath, selectedSongList));
+                //_loadingScreen.Hide();
+                //MessageBox.Show(fileCount + " files Renamed!", "File Renamed", MessageBoxButtons.OK);
             }
 
 
