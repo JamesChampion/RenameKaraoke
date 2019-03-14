@@ -6,13 +6,7 @@ namespace RenameKarakoke
 {
     public class InputHandler
     {
-        private readonly IReader _fileReader;
         private string FileName { get; set; }
-
-        public InputHandler(IReader fileReader)
-        {
-            _fileReader = fileReader;
-        }
 
         public bool IsValidInput(IEnumerable<TextBox> textBoxes)
         {

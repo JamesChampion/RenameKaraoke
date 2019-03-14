@@ -1,39 +1,39 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace RenameKarakoke
 {
-    class DirectoryReader : IReader
+   public class DirectoryReader
     {
-        private string _filePath { get; set; }
 
-        //public DirectoryReader(ISongListManager songListManager)
-        //{
-        //}
-
-        // Try having this method return the list of songs
-        public void Read(string path)
+        public List<Song> Read(string path)
         {
             var files = Directory.EnumerateFiles(path);
-            _filePath = path;
+            var songList = new List<Song>();
             foreach (var file in files)
             {
                 var fileName = Path.GetFileNameWithoutExtension(file);
-                Song.songQueryList.Add(ParseSong(fileName));
+                var song = ParseSong(fileName);
+                if (song != null)
+                {
+                    songList.Add(song);
+                }
+                else
+                {
+                    ThrowUnsupportedFileName(file);
+                }
             }
+            return songList;
         }
 
         public Song ParseSong(string line)
         {
-            //TODO: Catch Invalid Format And Allow User to Add them Manually
-
             var categories = Regex.Split(line, " - ");
-            if (categories.Length < 3)
+            if (categories.Length != 3)
             {
-                return new Song(categories[0], " INVALID FORMAT", " ");
+                //Invalid Entry Return Null
+                return null;
             }
             else
             {
@@ -44,6 +44,19 @@ namespace RenameKarakoke
             }
         }
 
-        public string GetFilePath() => _filePath;
+
+
+        public void ThrowUnsupportedFileName(string sourceFilePath)
+        {
+            //Create A Folder That Stores All Unsupported Files
+            var currentDirectory = Path.GetDirectoryName(sourceFilePath);
+            var targetDirectory = currentDirectory + "\\Unsupported Files";
+            if (!Directory.Exists(targetDirectory)){
+                Directory.CreateDirectory(targetDirectory);
+            }
+
+            var destFilePath = targetDirectory +"\\" + Path.GetFileName(sourceFilePath);
+            File.Copy(sourceFilePath, destFilePath);
+        }
     }
 }
