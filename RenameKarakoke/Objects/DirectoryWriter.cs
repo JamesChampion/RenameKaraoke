@@ -9,13 +9,14 @@ namespace RenameKarakoke.Objects
     class DirectoryWriter
     {
         private bool _isCompressed { get; set; }
-   
         private readonly DataSet _dataSet;
+        private readonly List<Song> _selectedSongList;
  
-        public DirectoryWriter(bool isCompressed, DataSet dataSet)
+        public DirectoryWriter()
         {
-            _isCompressed = isCompressed;
-            _dataSet = dataSet;
+           // _isCompressed = isCompressed;
+          //  _dataSet = dataSet;
+           // _selectedSongList = _dataSet.SelectedSongList;
         }
 
         public int RenameFilesInDirectory(string sourceDir, List<Song> selectedSongList)
@@ -90,10 +91,6 @@ namespace RenameKarakoke.Objects
             return savePath;
 
         }
-        public Song FindCorrectSongInfo(Song oldSong)
-        {
-            return _dataSet.MasterSongList.FirstOrDefault(s => s.Title == oldSong.Title);
-        }
 
         public void AddZipExtension(string fileName)
         {
@@ -158,10 +155,6 @@ namespace RenameKarakoke.Objects
 
         }
 
-        private void RenameFolderContents(string sourceZipPath, string fileName)
-        {
-            
-        }
 
 
 

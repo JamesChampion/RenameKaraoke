@@ -98,6 +98,8 @@
     <Compile Include="Objects\FileReader.cs" />
     <Compile Include="Model\Song.cs" />
     <Compile Include="Enum\UserResponse.cs" />
+    <Compile Include="Objects\FileWriter.cs" />
+    <Compile Include="Objects\RenameHelper.cs" />
     <Compile Include="Objects\SongListManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

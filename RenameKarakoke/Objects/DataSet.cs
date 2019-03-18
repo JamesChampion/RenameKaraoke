@@ -9,16 +9,13 @@ namespace RenameKarakoke.Objects
 {
     public class DataSet
     {
-        private InputSource _dataSource { get; set; }
-        public string SongDirPath { get; set; }
-        public List<Song> MasterSongList { get; set; }
-        public List<Song> QuerySongList { get; set; }
+        public string SongSourceDirPath { get; set; }
+        public SongListManager SongListManager { get; set; }
 
         public DataSet(SongListManager songListManager, string songDirPath)
         {
-            QuerySongList = songListManager.QuerySongList;
-            MasterSongList = songListManager.MasterSongList;
-            SongDirPath = songDirPath;
+            SongListManager = songListManager;
+            SongSourceDirPath = songDirPath;
         }
 
         public DataTable GetDataTable(InputSource dataSource)
@@ -89,7 +86,7 @@ namespace RenameKarakoke.Objects
         {
             if (IsMasterTable(dt))
             {
-                foreach(Song song in MasterSongList)
+                foreach(Song song in SongListManager.MasterSongList)
                 {
                     dt.Rows.Add(new object[] { song.ID, song.Artist, song.Title });
                 }
@@ -97,7 +94,7 @@ namespace RenameKarakoke.Objects
 
             if (IsQueryTable(dt))
             {
-                foreach (Song song in QuerySongList)
+                foreach (Song song in SongListManager.QuerySongList)
                 {
                     dt.Rows.Add(new object[] { false, song.ID, song.Artist, song.Title });
                 }

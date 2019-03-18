@@ -21,7 +21,7 @@ namespace RenameKarakoke
 
         {
             _dataSet = dataset;
-            _songDirPath = dirPath;
+             _dataSet.SongSourceDirPath = dirPath;
             _dataSource = InputSource.directory;
             _loadingScreen = new LoadingScreen();
             InitializeComponent();
@@ -46,24 +46,32 @@ namespace RenameKarakoke
 
         {
             bool isCompressed = false;
-            if (Unzip_checkBox.CheckState == CheckState.Checked)
-            {
-                isCompressed = true;
-            }
+            _dataSet.SongListManager.SelectedSongList = GetSelectedSongs();
+            var renameHelper = new RenameHelper(_dataSet);
+            if (Unzip_checkBox.CheckState == CheckState.Checked) isCompressed = true;
+            renameHelper.EvaluateUserInput(isCompressed);
+            
 
-            var directoryWriter = new DirectoryWriter(isCompressed, _dataSet);
-            var selectedSongList = GetSelectedSongs();
 
-            var currentDirPath = _songDirPath;
-            var saveDirPath = directoryWriter.GetDirectorySavePath();
-            if (saveDirPath != null)
-            {
-                Hide();
-                _loadingScreen.Show();
-                if (isCompressed)
-                {
-                    var fileCompressionHelper = new FileCompressionHelper(currentDirPath, saveDirPath, selectedSongList);
-                }
+            //bool isCompressed = false;
+            //if (Unzip_checkBox.CheckState == CheckState.Checked)
+            //{
+            //    isCompressed = true;
+            //}
+
+            //var directoryWriter = new DirectoryWriter(isCompressed, _dataSet);
+            //var selectedSongList = GetSelectedSongs();
+
+            //var currentDirPath = _songDirPath;
+            //var saveDirPath = directoryWriter.GetDirectorySavePath();
+            //if (saveDirPath != null)
+            //{
+            //    Hide();
+            //    _loadingScreen.Show();
+            //    if (isCompressed)
+            //    {
+            //        var fileCompressionHelper = new FileCompressionHelper(currentDirPath, saveDirPath, selectedSongList);
+            //    }
                 
                     //Find The Correct Song Info, 
                     //If its a match, check to see if they want to unzip it
@@ -77,7 +85,7 @@ namespace RenameKarakoke
                 //await Task.Run(() => fileCount = directoryWriter.RenameFilesInDirectory(saveDirPath, selectedSongList));
                 //_loadingScreen.Hide();
                 //MessageBox.Show(fileCount + " files Renamed!", "File Renamed", MessageBoxButtons.OK);
-            }
+            //}
 
 
         }
